@@ -1,0 +1,52 @@
+{% load static %}
+<footer class="footer qatar-footer">
+  <div class="container">
+    <div class="qatar-footer-heading">
+      <div><span class="footer-kicker">AT HOME IN QATAR</span><h2>Local care. Across Qatar.</h2><p>Home repairs, maintenance and moving enquiries, wherever you call home.</p></div>
+      <a class="footer-whatsapp" href="https://wa.me/97466433172" target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span>+974 6643 3172 &rarr;</span></a>
+    </div>
+    <div class="qatar-footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'services/qatar-move-and-fix-logo.png' %}" alt="Qatar Move &amp; Fix" width="1448" height="1086" decoding="async"></a>
+        <p>Practical help for your home, villa, apartment or workspace. Tell us what you need and share your location to get started.</p>
+        <address><span>Qatar &middot; Local service enquiries</span><a href="tel:+97466433172">Call: +974 6643 3172</a><a href="https://wa.me/97466433172" target="_blank" rel="noopener noreferrer">WhatsApp: +974 6643 3172</a></address>
+        <p class="footer-note">Send your location pin, service details and preferred date. Confirm availability and price before booking.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <h3>How can we help?</h3>
+        <a href="{% url 'services:list' %}">Browse all services</a>
+        <a href="{% url 'services:moving' %}">Moving &amp; shifting</a>
+        <a href="{% url 'services:contact' %}">Request a quote</a>
+        <a href="{% url 'services:about' %}">About Qatar Move &amp; Fix</a>
+        <a href="{% url 'services:areas' %}">Service area information</a>
+        <a href="{% url 'services:faq' %}">Frequently asked questions</a>
+      </nav>
+      <div class="footer-cities">
+        <h3>Your city. One WhatsApp number.</h3>
+        <p>Enquire from cities and communities across Qatar.</p>
+        <div class="footer-city-list">
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Doha." target="_blank" rel="noopener noreferrer">Doha</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Lusail." target="_blank" rel="noopener noreferrer">Lusail</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Rayyan." target="_blank" rel="noopener noreferrer">Al Rayyan</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Wakrah." target="_blank" rel="noopener noreferrer">Al Wakrah</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Khor." target="_blank" rel="noopener noreferrer">Al Khor</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Umm%20Salal." target="_blank" rel="noopener noreferrer">Umm Salal</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Daayen." target="_blank" rel="noopener noreferrer">Al Daayen</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Shamal." target="_blank" rel="noopener noreferrer">Al Shamal</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Dukhan." target="_blank" rel="noopener noreferrer">Dukhan</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Mesaieed." target="_blank" rel="noopener noreferrer">Mesaieed</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Wukair." target="_blank" rel="noopener noreferrer">Al Wukair</a>
+          <a href="https://wa.me/97466433172?text=Hello%2C%20I%20need%20a%20service%20in%20Al%20Shahaniya." target="_blank" rel="noopener noreferrer">Al Shahaniya</a>
+        </div>
+        <a class="footer-city-contact" href="https://wa.me/97466433172" target="_blank" rel="noopener noreferrer">All locations: +974 6643 3172 &rarr;</a>
+      </div>
+      <div class="footer-map">
+        <h3>Find your area in Qatar</h3>
+        <iframe title="Map of Qatar service enquiry areas" src="https://maps.google.com/maps?q=Qatar&amp;z=7&amp;output=embed" width="400" height="240" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Qatar" target="_blank" rel="noopener noreferrer">Explore Qatar on Google Maps &rarr;</a>
+        <p class="footer-note">Map shows Qatar. Send your exact location on WhatsApp to confirm service availability.</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>&copy; {% now "Y" %} Qatar Move &amp; Fix. All rights reserved.</span><span>Qatar &middot; Prices quoted in QAR <span class="footer-qatar-mark" aria-hidden="true"></span></span></div>
+  </div>
+</footer>

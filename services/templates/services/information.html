@@ -1,0 +1,12 @@
+{% extends 'services/base.html' %}
+{% block content %}
+<section class="page-hero container"><p class="eyebrow">{% if page == 'about' %}ABOUT QATAR MOVE &amp; FIX{% elif page == 'areas' %}SERVICE AREAS IN QATAR{% else %}FREQUENTLY ASKED QUESTIONS{% endif %}</p><h1>{{ page_heading }}</h1><p class="intro">{{ seo_description }}</p></section>
+{% if page == 'about' %}
+<section class="section container two-column"><div><p class="eyebrow">OUR APPROACH</p><h2>A home is a collection<br>of everyday details.</h2></div><div class="prose"><p>A tap that needs attention. Furniture that needs assembling. A home that needs a fresh coat of paint. A move that needs a plan. Qatar Move &amp; Fix brings these different needs into one service catalogue.</p><p>Our approach starts with your requirements. A clear request helps establish the location, work involved and materials or access needed. The next step is to review the scope, availability and quote before confirming an appointment.</p><p>We keep the information practical: what a service covers, what details to share and which questions to ask before work begins.</p></div></section>
+<section class="section container process-grid"><article><span>01</span><h3>Clear scope</h3><p>Understand the work being requested and identify any exclusions or extra materials before confirming.</p></article><article><span>02</span><h3>Useful details</h3><p>Property access, item lists and location help turn a general request into a workable plan.</p></article><article><span>03</span><h3>Considered decisions</h3><p>Review availability and the final quote before booking a repair, maintenance visit or move.</p></article></section>
+{% elif page == 'areas' %}
+<section class="section container"><div class="area-grid">{% for name, description in areas %}<article class="area-card"><span class="eyebrow">QATAR</span><h2>{{ name }}</h2><p>{{ description }}</p><a class="text-link" href="{% url 'services:contact' %}">Enquire about {{ name }} ↗</a></article>{% endfor %}</div></section><section class="editorial container"><h2>Your exact address makes a difference.</h2><p>These are enquiry locations, with service availability confirmed case by case. Include the area, building or villa details, parking access and any permitted work times. For locations elsewhere in Qatar, send the same details so travel and scheduling requirements can be reviewed.</p></section>
+{% else %}
+<section class="section container faq-full">{% include 'services/_faqs.html' %}</section>
+{% endif %}
+{% endblock %}
