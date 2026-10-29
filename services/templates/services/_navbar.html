@@ -1,0 +1,29 @@
+{% load static %}
+<header class="header site-header" data-site-header>
+  <div class="container site-header-inner">
+    <a class="brand site-brand" href="{% url 'home' %}" aria-label="Qatar Move &amp; Fix home"><img class="brand-logo" src="{% static 'services/qatar-move-and-fix-logo.png' %}" alt="Qatar Move &amp; Fix" width="1448" height="1086" decoding="async"></a>
+    <button class="nav-mobile-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+    <nav class="site-navigation" id="site-navigation" aria-label="Main navigation">
+      <a class="nav-link" href="{% url 'home' %}" {% if is_home %}aria-current="page"{% endif %}>Home</a>
+      <details class="nav-services" data-nav-dropdown>
+        <summary class="nav-link {% if nav_section == 'services' %}nav-link-active{% endif %}">Services <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary>
+        <div class="nav-mega-panel">
+          <div class="nav-mega-heading"><div><span class="nav-eyebrow">HELP FOR EVERY SPACE</span><h2>Find your service</h2><p>Explore our categories and choose the help you need.</p></div><a class="nav-browse-all" href="{% url 'services:list' %}">View all services &rarr;</a></div>
+          <div class="nav-category-grid">
+            {% for category in nav_categories %}
+            <section class="nav-category-group" aria-labelledby="nav-category-{{ category.slug }}">
+              <h3 id="nav-category-{{ category.slug }}"><a href="{{ category.get_absolute_url }}">{{ category.name }} <span aria-hidden="true">&rarr;</span></a></h3>
+              <ul>{% for service in category.nav_services %}<li><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></li>{% empty %}<li><a href="{{ category.get_absolute_url }}">Explore category &rarr;</a></li>{% endfor %}</ul>
+            </section>
+            {% empty %}<p>New services are coming soon. Contact us with your requirements.</p>{% endfor %}
+          </div>
+          <div class="nav-mega-footer"><span>Need help choosing? Tell us what you need.</span><a href="https://wa.me/97466433172" target="_blank" rel="noopener noreferrer">WhatsApp +974 6643 3172 &rarr;</a></div>
+        </div>
+      </details>
+      <a class="nav-link" href="{% url 'services:about' %}" {% if nav_section == 'about' %}aria-current="page"{% endif %}>About us</a>
+      <a class="nav-link" href="{% url 'services:areas' %}" {% if nav_section == 'areas' %}aria-current="page"{% endif %}>Service areas</a>
+      <a class="nav-link" href="{% url 'services:contact' %}" {% if nav_section == 'contact' %}aria-current="page"{% endif %}>Contact</a>
+      <a class="nav-quote" href="{% url 'services:contact' %}">Get a quote <span aria-hidden="true">&rarr;</span></a>
+    </nav>
+  </div>
+</header>
