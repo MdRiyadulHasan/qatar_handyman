@@ -21,8 +21,20 @@
   <meta name="twitter:description" content="{{ twitter_description|default:seo_description }}">
   {% if seo_image %}<meta name="twitter:image" content="{{ seo_image }}"><meta name="twitter:image:alt" content="{{ seo_image_alt }}">{% endif %}
   <link rel="icon" type="image/png" href="{% static 'services/favicon.png' %}?v=20261027-qatar-icon">
-  <link rel="stylesheet" href="{% static 'services/styles.css' %}?v=20261027-home-slider-first">
+  <link rel="stylesheet" href="{% static 'services/styles.css' %}?v=20261106-logo-110">
   <link rel="stylesheet" href="{% static 'services/responsive-slider.css' %}?v=20261030-2">
+  <!-- Edit logo width here for cPanel updates without collectstatic. -->
+  <style>
+    .brand-logo,
+    .site-brand .brand-logo,
+    .qatar-footer .brand-logo {
+      display: block;
+      width: 110px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  </style>
   {% if schema_json %}<script type="application/ld+json">{{ schema_json|safe }}</script>{% endif %}
 </head>
 <body>

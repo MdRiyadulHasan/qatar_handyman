@@ -6,7 +6,7 @@ from django.http import HttpResponse, Http404
 from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, FormView, ListView, TemplateView
-from .content import AREAS, FAQS, PAGES
+from .content import AREAS, FAQS, INFORMATION_FAQS, PAGES
 from .forms import InquiryForm
 from .service_copy import ENQUIRY_AREAS
 from .models import Category, CategoryImage, CustomerReview, HomeSlide, Service, ServiceImage
@@ -208,10 +208,43 @@ class InformationView(SEOMixin, TemplateView):
         title, heading, description = PAGES[self.page]
         context.update(page=self.page, page_heading=heading, seo_title=title,
                        seo_description=description, nav_section=self.page, areas=AREAS, faqs=FAQS)
-        context["schema_json"] = json_ld({
-            "@context": "https://schema.org", "@type": "WebPage", "name": title,
-            "description": description, "url": context["canonical_url"],
-        })
+        if self.page == "about":
+            context["customer_reviews"] = CustomerReview.objects.filter(is_published=True)
+            context["about_work_images"] = ServiceImage.objects.filter(
+                is_active=True, service__is_active=True, service__category__is_active=True,
+            ).exclude(image="")[:6]
+        page_faqs = INFORMATION_FAQS.get(self.page, [])
+        context["page_faqs"] = page_faqs
+        if self.page in {"about", "areas"}:
+            # Use uploaded photos and show a mix of service categories.
+            selected_services = []
+            selected_categories = set()
+            candidates = public_services().filter(
+                (~Q(image="") & Q(image__isnull=False))
+                | Q(images__is_active=True, images__image__gt="")
+                | (~Q(category__image="") & Q(category__image__isnull=False))
+                | Q(category__images__is_active=True, category__images__image__gt="")
+            ).distinct().order_by("category__rank", "category__name", "rank", "name", "pk")
+            for service in candidates:
+                if service.category_id in selected_categories:
+                    continue
+                selected_services.append(service)
+                selected_categories.add(service.category_id)
+                if len(selected_services) == 6:
+                    break
+            context["information_services"] = selected_services
+        graph = [
+            {"@type": "AboutPage" if self.page == "about" else "WebPage", "name": title,
+             "description": description, "url": context["canonical_url"]},
+            breadcrumb_schema(self.request, [
+                ("Home", reverse("home")),
+                ("About us" if self.page == "about" else "Service areas" if self.page == "areas" else "FAQs",
+                 context["canonical_url"]),
+            ]),
+        ]
+        if page_faqs:
+            graph.append(faq_schema(page_faqs))
+        context["schema_json"] = json_ld({"@context": "https://schema.org", "@graph": graph})
         return context
 
 

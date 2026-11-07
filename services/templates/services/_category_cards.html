@@ -14,10 +14,10 @@
     </div>
     <div class="service-card-content">
       <h3><a href="{% if category_anchor_links %}#category-{{ category.slug }}{% else %}{{ category.get_absolute_url }}{% endif %}">{{ category.name }}</a></h3>
-      {% if category.description %}<p>{{ category.description|striptags|truncatewords:18 }}</p>{% endif %}
+      {% if category.description %}<p>{{ category.description|striptags|truncatechars:300 }}</p>{% endif %}
       <div class="card-bottom">
         {% if category_anchor_links %}<strong>{{ category.home_services|length }} service{{ category.home_services|length|pluralize }}</strong>{% endif %}
-        <a class="card-learn-more" href="{% if category_anchor_links %}#category-{{ category.slug }}{% else %}{{ category.get_absolute_url }}{% endif %}" aria-label="Explore {{ category.name }} services">Explore Services <span aria-hidden="true">&rarr;</span></a>
+        <a class="card-learn-more" href="{% if category_anchor_links %}#category-{{ category.slug }}{% else %}{{ category.get_absolute_url }}{% endif %}" aria-label="Explore {{ category.name }} services">Read more <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </article>

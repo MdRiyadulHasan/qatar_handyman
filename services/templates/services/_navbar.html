@@ -8,7 +8,6 @@
       <details class="nav-services" data-nav-dropdown>
         <summary class="nav-link {% if nav_section == 'services' %}nav-link-active{% endif %}">Services <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary>
         <div class="nav-mega-panel">
-          <div class="nav-mega-heading"><div><span class="nav-eyebrow">HELP FOR EVERY SPACE</span><h2>Find your service</h2><p>Explore our categories and choose the help you need.</p></div><a class="nav-browse-all" href="{% url 'services:list' %}">View all services &rarr;</a></div>
           <div class="nav-category-grid">
             {% for category in nav_categories %}
             <section class="nav-category-group" aria-labelledby="nav-category-{{ category.slug }}">

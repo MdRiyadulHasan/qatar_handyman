@@ -1,5 +1,11 @@
 {% extends 'services/base.html' %}{% load static content_filters %}
 {% block content %}
+<style>
+  .grouped-services > .category-section { padding-block: 40px; }
+  @media (max-width: 700px) {
+    .grouped-services > .category-section { padding-block: 30px; }
+  }
+</style>
 {% include 'services/_slider.html' %}
 <section class="section container" aria-labelledby="categories-heading">
   <div class="section-heading"><div><p class="eyebrow">FIND YOUR STARTING POINT</p><h2 id="categories-heading">All our categories</h2></div><p>Explore the care your home or workspace needs.</p></div>

@@ -78,7 +78,7 @@ class Service(SEOFields):
     name = models.CharField(max_length=150)
     rank = models.PositiveIntegerField(default=0, db_index=True, help_text="Lower numbers appear first within the category.")
     slug = models.SlugField(unique=True)
-    summary = models.CharField(max_length=250)
+    summary = models.CharField(max_length=400)
     description = models.TextField()
     image = models.ImageField(
         upload_to="services/covers/%Y/%m/", max_length=255, blank=True,

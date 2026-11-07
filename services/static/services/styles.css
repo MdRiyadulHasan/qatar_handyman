@@ -281,11 +281,11 @@
 
 /* Supplied Qatar Move & Fix logo, displayed at its original aspect ratio. */
 .site-header-inner{padding-block:8px}
-.brand-logo{display:block;width:176px;height:auto;object-fit:contain;flex-shrink:0}
+.brand-logo{display:block;width:110px;height:auto;object-fit:contain;flex-shrink:0}
 .qatar-footer .brand{display:inline-flex;max-width:100%;background:#fff;border-radius:12px;overflow:hidden}
-.qatar-footer .brand-logo{width:220px;max-width:100%}
+.qatar-footer .brand-logo{width:110px;max-width:100%}
 @media(max-width:1000px){.site-header-inner{padding-block:12px}}
-@media(max-width:480px){.site-brand .brand-logo{width:144px}}
+@media(max-width:480px){.site-brand .brand-logo{width:110px}}
 
 /* Database-managed customer feedback. */
 .customer-reviews{background:#faf0f3;border-top:1px solid var(--border)}
